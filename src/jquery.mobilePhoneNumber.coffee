@@ -1,7 +1,5 @@
 $ = jQuery
 
-supportSelectionEnd = 'selectionEnd' of document.createElement('input')
-
 formatForPhone_ = (phone, defaultPrefix = null) ->
   if phone.indexOf('+') != 0 and defaultPrefix
     phone = defaultPrefix + phone.replace(/[^0-9]/g, '')
@@ -80,8 +78,8 @@ restrictEventAndFormat_ = (e) ->
 
   return if !isEventAllowedChar_(e)
   value = @val()
-  caretEnd = if supportSelectionEnd then @get(0).selectionEnd else @caret()
-  value = value.substring(0, @caret()) +
+  caretEnd = @get(0).selectionEnd
+  value = value.substring(0, caretPosition_.call(this)) +
           String.fromCharCode(e.which) +
           value.substring(caretEnd, value.length)
   format_.call(@, value, e)
@@ -89,7 +87,7 @@ restrictEventAndFormat_ = (e) ->
 formatUp_ = (e) ->
   checkForCountryChange_.call(@)
   value = @val()
-  return if e.keyCode == 8 && @caret() == value.length
+  return if e.keyCode == 8 && caretPosition_.call(this) == value.length
   format_.call(@, value, e)
 
 formatBack_ = (e) ->
@@ -97,7 +95,7 @@ formatBack_ = (e) ->
   return if e.meta
   value = @val()
   return if value.length == 0
-  return if !(@caret() == value.length)
+  return if !(caretPosition_.call(this) == value.length)
   return if e.keyCode != 8
 
   value = value.substring(0, value.length - 1)
@@ -109,13 +107,13 @@ formatBack_ = (e) ->
 format_ = (value, e) ->
   phone = formattedPhone_.call(@, value, true)
   if phone != @val()
-    textBeforeCaret = value.slice(0, @caret() + 1).replace(/\D+/g, '')
+    textBeforeCaret = value.slice(0, caretPosition_.call(this) + 1).replace(/\D+/g, '')
     e.preventDefault()
     @val(phone)
     selection = getNewCaretPosition_.call(this, textBeforeCaret)
     selectionAtEnd = selection == @val().length
     if !selectionAtEnd
-      @caret(selection)
+      setCaretPosition_.call(this, selection)
 
 formattedPhone_ = (phone, lastChar) ->
   if phone.indexOf('+') != 0 && @data('defaultPrefix')
@@ -149,8 +147,19 @@ getNewCaretPosition_ = (textBeforeCaret) ->
 
   caretPosition
 
+caretPosition_ = ->
+  @[0].selectionStart
+
+setCaretPosition_ = (position) ->
+  @[0].setSelectionRange(position, position)
+
+browserNotSupported = ->
+  return true if !'selectionStart' of document.createElement('input')
+  return false
+
 mobilePhoneNumber = {}
 mobilePhoneNumber.init = (options = {}) ->
+  return if browserNotSupported()
   unless @data('mobilePhoneNumberInited')
     @data('mobilePhoneNumberInited', true)
     @bind 'keypress', =>
