@@ -14,7 +14,7 @@ $('input.phone-num').bind('country.mobilePhoneNumber', function(e, country) {
 })
 ```
 
-You can find a [demo here](http://shopify.github.io/jquery.mobilePhoneNumber/example).
+You can find a [demo here](http://shopify.github.io/phoneNumberFormatter/example).
 
 Browser support:
 

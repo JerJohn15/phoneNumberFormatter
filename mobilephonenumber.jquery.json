@@ -20,7 +20,7 @@
   "homepage": "https://github.com/shopify/phoneNumberFormatter",
   "docs": "https://github.com/shopify/phoneNumberFormatter",
   "bugs": "https://github.com/shopify/phoneNumberFormatter/issues",
-  "demo": "http://shopify.github.io/jquery.mobilePhoneNumber/example",
+  "demo": "http://shopify.github.io/phoneNumberFormatter/example",
   "dependencies": {
     "jquery": ">=1.5",
     "caret": ">=1.3.1"

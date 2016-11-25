@@ -1,18 +1,18 @@
 {
-  "name": "jquery.mobilephonenumber",
+  "name": "phoneNumberFormatter",
   "version": "1.0.7",
   "description": "A general purpose library for validating and formatting mobile phone numbers.",
   "license": "MIT",
   "keywords": [
     "phone"
   ],
-  "author": "Stripe (https://www.stripe.com)",
+  "author": "Shopify (https://www.shopify.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stripe/jquery.mobilePhoneNumber.git"
+    "url": "https://github.com/shopify/phoneNumberFormatter.git"
   },
-  "main": "lib/jquery.mobilePhoneNumber.js",
+  "main": "lib/phoneNumberFormatter.js",
   "scripts": {
     "test": "cake test"
   },

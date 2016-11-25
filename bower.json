@@ -1,7 +1,7 @@
 {
-  "name": "jquery.mobilephonenumber",
+  "name": "phoneNumberFormatter",
   "version": "1.0.6",
-  "main": "lib/jquery.mobilePhoneNumber.js",
+  "main": "lib/phoneNumberFormatter.js",
   "dependencies": {
     "jquery": ">=1.5"
   }
