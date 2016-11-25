@@ -1,4 +1,4 @@
-This is a fork from Stripe [jQuery.mobilePhoneNumber](https://github.com/stripe/jquery.mobilePhoneNumber). The goal of repo is to remove the jQuery dependency and move to es6.
+The goal of repo is to remove the jQuery dependency and move to es6.
 
 A general purpose library for validating and formatting mobile phone numbers.
 
@@ -136,3 +136,8 @@ We recommend you set the `pattern`, `type`, and `x-autocompletetype` attributes,
 ```
 
 You may have to turn off HTML5 validation (using the `novalidate` form attribute) when using this `pattern`, since it won't permit spaces and other characters that appear in the formatted version of the phone number.
+
+
+## Credits
+
+- Stripe for initial fork of [jQuery.mobilePhoneNumber](https://github.com/stripe/jquery.mobilePhoneNumber)
